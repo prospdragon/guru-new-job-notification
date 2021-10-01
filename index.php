@@ -43,10 +43,14 @@
 
                     if (i === 0 && result[i].title !== first_title) {
                         if (Notification.permission === "granted") {
-                            new Notification('Guru New Job',{
+                            let notification = new Notification('Guru New Job',{
                                 body: result[i].title,
-                                icon: 'https://img-guru.com/20210930.1/images/Guru-logo2.png'
+                                icon: 'https://img-guru.com/20210930.1/images/Guru-logo2.png',
                             });
+                            notification.onclick = function(event) {
+                                event.preventDefault();
+                                window.open(result[i].link, '_blank');
+                            }
                         }
 
                         first_title = result[i].title;
